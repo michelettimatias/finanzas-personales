@@ -21,7 +21,7 @@ const links = [
 export default function SideNav() {
 
 	const pathname = usePathname();
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 
 
 	return (
@@ -29,11 +29,9 @@ export default function SideNav() {
 			<button 
 				className={`
 					rounded-tr-full
-					rounded-br-full 
-					bg-white
-					text-neutral-600
-					h-12
-					w-12 
+					rounded-br-full
+					h-16
+					w-16 
 					flex md:hidden
 					items-center
 					justify-center 
@@ -45,7 +43,7 @@ export default function SideNav() {
 					transition-transform
 					duration-300
 					ease-in-out
-					${isOpen ? 'translate-x-20' : 'translate-x-0'}`
+					${isOpen ? 'translate-x-20 text-5xl bg-neutral-50 text-blue-500' : 'translate-x-0 text-2xl font-bold bg-blue-500 text-white'}`
 				}
 				onClick={() => setIsOpen(prev => !prev)}>
 				{isOpen ? '×' : '☰'}
@@ -98,25 +96,21 @@ export default function SideNav() {
 												h-20
 												transition-colors
 												duration-600
-												text-lg
+												text-2xl
 												text-neutral-600
 												${pathname === link.href ? 'bg-blue-500 text-white' : 'hover:text-blue-600 hover:bg-blue-100'}
 												flex
 												items-center
 												justify-center
 											`}
+											onClick={() => setIsOpen(false)}
 										>
 											<LinkIcon />
 										</Link>
 									)
 								}
 							)
-						}
-					</div>
-
-
-
-								<Link
+						}<Link
 									key='Logout'
 									href='/logout'
 									className={`
@@ -124,7 +118,7 @@ export default function SideNav() {
 										h-20
 										transition-colors
 										duration-600
-										text-2xl
+										text-4xl
 										text-neutral-600
 										hover:text-blue-500
 										hover:bg-blue-100
@@ -133,6 +127,7 @@ export default function SideNav() {
 										justify-center`}>
 										<IoLogOut />
 								</Link>
+					</div>
 				</div>
 			</div>
 		</>
