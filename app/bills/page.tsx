@@ -25,7 +25,6 @@ export default async function Bills() {
 				">
 					<h2
 						className="
-						text-l
 						font-bold
 						tracking-widest
 						text-blue-500

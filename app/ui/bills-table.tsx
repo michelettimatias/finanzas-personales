@@ -4,16 +4,22 @@ import TableRow from './table-row';
 
 export default function BillsTable({ bills }: { bills: Bills[] }) {
 	
-	let oddBill = true;
+	const billsCant = bills.length;
+	let billsCount = 0;
 	
 	return (
 		<>
-		<div className="hidden lg:flex flex-col w-full bg-white rounded-lg shadow-xl overflow-hidden">
+		<div className="hidden lg:flex flex-col w-full rounded-lg shadow-xl bg-white overflow-hidden">
 			{bills.map((bill) => {
-				oddBill=!oddBill;
+				if(billsCount === billsCant){
+					billsCount = 0;
+				}
+				else{
+					billsCount++;
+				}
 				const date = new Date(bill.date);
 				return (
-					<div key={bill.id} className={`flex flex-row w-full h-18 items-center ${oddBill ? 'bg-neutral-200' : 'bg-white'}`}>
+					<div key={bill.id} className={`flex flex-row w-full h-18 items-center hover:bg-neutral-200 ${billsCount===billsCant? '' : 'border-b border-neutral-300'}`}>
 						<div className="
 							basis-2/8
 							lg:basis-2/8
@@ -73,11 +79,27 @@ export default function BillsTable({ bills }: { bills: Bills[] }) {
 				)
 			})}
 		</div>
-		<div className="flex lg:hidden flex-col w-full bg-white rounded-lg shadow-xl overflow-hidden">
+		<div
+			className="
+				bg-white
+				text-xs
+				flex
+				lg:hidden
+				flex-col
+				w-full
+				rounded-lg
+				shadow-lg
+				overflow-hidden
+			">
 			{bills.map((bill) => {
-				oddBill=!oddBill;
+				if(billsCount === billsCant){
+					billsCount = 0;
+				}
+				else{
+					billsCount++;
+				}
 				return (
-					<TableRow key={bill.id} odd={oddBill} bill={bill}>
+					<TableRow key={bill.id} last={billsCount===billsCant} bill={bill}>
 					</TableRow>
 					
 				)
