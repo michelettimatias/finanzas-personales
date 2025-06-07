@@ -20,9 +20,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${openSans.className} antialiased text-md xl:text-lg`}>
-				<div className="h-screen flex flex-row">
+				<div className="h-screen flex flex-row overflow-hidden">
 					<SideNav />
-					<div className="h-screen w-full">
+					<div className="h-screen overflow-scroll min-w-90 w-full bg-gray-200">
 					{children}
 					</div>
 				</div>

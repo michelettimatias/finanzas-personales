@@ -1,8 +1,10 @@
-import { Bills } from '../lib/definitions';
 import { MdEdit, MdDelete } from "react-icons/md";
 import TableRow from './table-row';
+import { fetchFilteredBills } from "../lib/data";
 
-export default function BillsTable({ bills }: { bills: Bills[] }) {
+export default async function BillsTable({query}: {query: string}) {
+
+	const bills = await fetchFilteredBills(query);
 	
 	const billsCant = bills.length;
 	let billsCount = 0;

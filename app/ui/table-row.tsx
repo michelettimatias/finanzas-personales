@@ -54,6 +54,33 @@ export default function TableRow({last, bill}: {last: boolean, bill: Bills}) {
 						</div>
 					</div>
 					<div className={`
+						pl-4
+						gap-4
+						overflow-hidden
+						transition-all
+						duration-300
+						ease-in-out
+						flex
+						flex-row
+						w-full
+						items-center
+						${expand ? 'h-18' : 'h-0'}`}
+					>
+						<div className="
+							basis-8/8">
+							{bill.description}
+						</div>
+						<div className='
+							basis-1/8
+							flex
+							flex-row
+							justify-end
+							h-full'>
+							<div className="text-2xl flex justify-center items-center text-blue-500 hover:bg-blue-500 hover:text-neutral-50 w-18 h-full">
+								<MdEdit />
+							</div>
+						</div>
+					</div><div className={`
 							pl-4
 							gap-4
 						overflow-hidden
@@ -68,22 +95,19 @@ export default function TableRow({last, bill}: {last: boolean, bill: Bills}) {
 					>
 						<div className="
 							basis-4/8">
-							{bill.description}
+							{bill.category}
 						</div>
 						<div className="
 							basis-2/8">
 							{bill.method}
 						</div>
 						<div className='
-							basis-2/8
+							basis-1/8
 							flex
 							flex-row
 							justify-end
 							h-full'>
-							<div className="flex justify-center items-center text-blue-500 hover:bg-blue-500 hover:text-neutral-50 w-18 h-full">
-								<MdEdit />
-							</div>
-							<div className="flex justify-center items-center text-red-500 hover:bg-red-500 hover:text-neutral-50 w-18 h-full">
+							<div className="text-2xl flex justify-center items-center text-red-500 hover:bg-red-500 hover:text-neutral-50 w-18 h-full">
 								<MdDelete />
 							</div>
 						</div>

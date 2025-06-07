@@ -1,17 +1,18 @@
-import { fetchBills } from "../lib/data";
+import AddBill from "../ui/add-bill";
 import BillsTable from "../ui/bills-table";
+import SearchBills from "../ui/search-bar";
 
-export default async function Bills() {
-
-	const bills = await fetchBills();
-
+export default async function Bills(props: {
+	searchParams?: Promise<{
+		query?: string;
+	}>;
+	}) {
+	const searchParams = await props.searchParams;
+	const query = searchParams?.query || '';
 	return (
 			<div 
 				className="
-				px-6
-				md:p-12
 				py-8
-				min-w-128
 				flex
 				flex-col
 				gap-16
@@ -19,6 +20,8 @@ export default async function Bills() {
 			">
 				<div
 					className="
+					px-4
+					md:p-12
 					flex
 					flex-col
 					gap-8
@@ -31,7 +34,9 @@ export default async function Bills() {
 					">
 						GASTOS
 					</h2>
-					<BillsTable bills={bills} />
+					<AddBill />
+					<SearchBills />
+					<BillsTable query={query}/>
 				</div>
 			</div>
 	);

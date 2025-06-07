@@ -28,22 +28,22 @@ export default function SideNav() {
 		<>
 			<button 
 				className={`
-					rounded-tr-full
-					rounded-br-full
+					rounded-tl-full
+					rounded-bl-full
 					h-16
-					w-16 
+					w-16
 					flex md:hidden
 					items-center
-					justify-center 
+					justify-center
 					absolute
-					top-[50%] 
-					left-0
+					top-3
+					right-0
 					z-50
 					transform
 					transition-transform
 					duration-300
 					ease-in-out
-					${isOpen ? 'translate-x-20 text-5xl bg-neutral-50 text-blue-500' : 'translate-x-0 text-2xl font-bold bg-blue-500 text-white'}`
+					${isOpen ? '-translate-x-20 text-4xl bg-neutral-50 text-blue-500' : 'translate-x-0 text-2xl font-bold bg-blue-500 text-white'}`
 				}
 				onClick={() => setIsOpen(prev => !prev)}>
 				{isOpen ? '×' : '☰'}
@@ -58,17 +58,17 @@ export default function SideNav() {
 					bg-neutral-50
 					absolute
 					md:static
-					top-0 
-					left-0
+					top-0
+					right-0
 					z-40
 					transform
-					transition-transform
+					transition-all
 					duration-300
 					ease-in-out
-					md:translate-x-0
-					md:w-auto
 					shadow-lg
-					${isOpen ? 'translate-x-0' : '-translate-x-full'}
+					overflow-hidden
+					md:w-20
+					${isOpen ? 'w-20' : 'w-0'}
 				`}>
 				<div
 					className="
